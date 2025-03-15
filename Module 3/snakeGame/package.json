@@ -1,8 +1,17 @@
 {
+<<<<<<< HEAD
 	"scripts": {
 		"start": "servor --reload"
 	},
 	"dependencies": {
 		"servor": "^4.0.2"
 	}
+=======
+  "scripts": {
+    "start": "servor --reload"
+  },
+  "dependencies": {
+    "servor": "^4.0.2"
+  }
+>>>>>>> 04a809a6606691724b6500cbd5a9caf1d03ed89d
 }
