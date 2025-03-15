@@ -1,0 +1,97 @@
+body {
+	background-image: url(https://up.tsargrad.tv/uploads/%D1%81%D0%B2%D1%8F%D1%82%D0%BE%D0%B9%20%D0%B4%D0%BD%D1%8F/%D0%BF%D0%B8%D1%84%D0%B3%D0%BE%D1%80-02.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	display: flex;
+	justify-self: end;
+}
+.container {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	width: 600px;
+	height: 500px;
+	left: -10%;
+	background-image: linear-gradient(
+		170deg,
+		rgba(118, 167, 200, 0.455) 0%,
+		rgb(173, 214, 204, 0.455) 53%,
+		rgb(170, 216, 212, 0.455) 56.99999999999999%,
+		rgb(148, 205, 201, 0.455) 100%
+	);
+	border: 10px solid rgba(255, 255, 255, 0.362);
+	border-radius: 20%;
+	overflow: hidden;
+}
+.container::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: linear-gradient(
+		170deg,
+		rgb(118, 167, 200, 0.455) 0%,
+		rgb(173, 214, 204, 0.455) 53%,
+		rgb(170, 216, 212, 0.455) 56.99999999999999%,
+		rgb(148, 205, 201, 0.455) 100%
+	);
+
+	filter: blur(50px);
+	z-index: -1;
+}
+.container button,
+.container input {
+	position: relative;
+	top: 5%;
+	line-height: 50px;
+	border: none;
+	box-sizing: border-box;
+}
+.container button {
+	width: 150px;
+	height: 50px;
+	font-size: 25px;
+	font-family: system-ui;
+	padding: 0 0;
+	background-color: rgb(54, 121, 214);
+	color: white;
+}
+.container button:hover {
+	outline: 3px solid black;
+	cursor: pointer;
+}
+.container button:active {
+	transform: scale(1.05);
+}
+
+.container input {
+	width: 150px;
+	height: 50px;
+	text-align: center;
+}
+.window {
+	position: absolute;
+	top: 20%;
+	width: 550px;
+	height: 340px;
+	background-color: rgba(248, 248, 255, 0.626);
+	border-radius: 3%;
+}
+.window .text {
+	margin-left: 15px;
+	margin-top: 4px;
+	font-size: 20px;
+	display: flex;
+	width: 94%;
+	height: 333px;
+	overflow-y: auto;
+}
+.container input::placeholder {
+	position: relative;
+	top: 2px;
+	font-size: 16px;
+}
