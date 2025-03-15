@@ -1,0 +1,97 @@
+body {
+	font-family: Arial, sans-serif;
+}
+#todo-list {
+	list-style-type: none;
+	padding: 0;
+}
+.todo-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 8px;
+	border-bottom: 1px solid #ccc;
+	cursor: pointer;
+}
+.completed {
+	text-decoration: line-through;
+	color: #888;
+}
+ul li {
+	display: inline-block;
+	z-index: 1;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	user-select: none;
+}
+#todo-list {
+	display: flex;
+	gap: 30px;
+}
+.delete,
+.edit {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 25px;
+	height: 25px;
+	margin-left: 8px;
+	cursor: pointer;
+	z-index: 2;
+}
+.delete svg,
+.edit svg {
+	z-index: 2;
+}
+.customWindow {
+	width: 500px;
+	height: 200px;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translate(-50%);
+	background: radial-gradient(
+				ellipse at 50% 10%,
+				transparent 0%,
+				rgba(105, 193, 231, 0.99) 100%
+			)
+			10% 70%/130% 160%,
+		linear-gradient(
+			330deg,
+			rgb(37, 32, 222) 0%,
+			rgb(109, 112, 244) 15%,
+			rgb(92, 142, 234) 65%,
+			rgb(24, 44, 232) 85%,
+			rgb(46, 79, 234) 100%
+		);
+
+	border-radius: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.customWindow input {
+	width: 200px;
+	height: 30px;
+	padding-left: 5px;
+	font-size: 15px;
+}
+.customWindow button {
+	height: 35px;
+	width: 35px;
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+}
+.customWindow input,
+.customWindow button {
+	background-color: transparent;
+	border: 2px solid black;
+	color: white;
+	border-radius: 10px;
+}
+.customWindow button:hover {
+	scale: 1.05;
+}
+.customWindow input:focus {
+	outline: none;
+}
