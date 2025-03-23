@@ -29,7 +29,16 @@ h1 {
 #todo-list {
 	list-style-type: none;
 	padding: 0;
+	display: grid !important;
+	grid-template-columns: repeat(3, 1fr);
+	grid-auto-flow: dense;
+	align-items: start;
+	gap: 15px;
+	padding: 0;
+	margin: 20px 0;
+	list-style: none;
 }
+
 .todo-item {
 	display: flex;
 	justify-content: space-between;
@@ -38,6 +47,10 @@ h1 {
 	border-bottom: 1px solid #ccc;
 	cursor: pointer;
 	font-weight: bold;
+	width: 200px;
+	height: 40px;
+	break-inside: avoid;
+	position: relative;
 }
 .todo-item.low {
 	background-color: rgba(109, 206, 109, 0.504);
@@ -57,13 +70,11 @@ h1 {
 	color: #888;
 }
 ul li {
-	display: inline-block;
 	z-index: 1;
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 	user-select: none;
 }
 #todo-list {
-	display: flex;
 	gap: 30px;
 }
 .delete,

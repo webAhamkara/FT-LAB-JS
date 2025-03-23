@@ -37,7 +37,15 @@ function loadTasks() {
 				`<li class="todo-item ${task.priority} ${
 					task.completed ? 'completed' : ''
 				}"></li>`
+			).css(
+				'grid-column',
+				{
+					low: 1,
+					medium: 2,
+					high: 3,
+				}[task.priority] || 1
 			)
+
 			const taskText = $('<span></span>').text(task.text)
 			const buttonDelete = $(
 				'<div class="delete"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.5305 9.99595L19.0623 5.46883C20.3126 4.22108 20.3126 2.18956 19.0623 0.941811C17.8103 -0.313937 15.7817 -0.313937 14.5305 0.941811L9.99961 5.46883L5.46868 0.941811C4.21835 -0.313937 2.18967 -0.313937 0.937744 0.941811C-0.312582 2.18956 -0.312581 4.22108 0.937744 5.46883L5.46868 9.99595L0.937744 14.5311C-0.312581 15.7788 -0.312581 17.8104 0.937744 19.0582C2.18967 20.3139 4.21835 20.3139 5.46868 19.0582L9.99961 14.5311L14.5305 19.0582C15.7817 20.3139 17.8103 20.3139 19.0623 19.0582C20.3126 17.8104 20.3126 15.7788 19.0623 14.5311L14.5305 9.99595Z" fill="red"/></svg></div>'
@@ -67,7 +75,7 @@ function loadTasks() {
 				e.stopPropagation()
 				const index = $(this).parent().index()
 				tasks.splice(index, 1)
-				saveTasks() // Сохранение в localStorage
+				saveTasks()
 				$(this).parent().remove()
 				if (customWindow.length) customWindow.hide()
 			})
@@ -91,7 +99,15 @@ async function addTask() {
 	if (newTask.trim() !== '') {
 		tasks.push({ text: newTask, completed: false, priority: priority })
 		saveTasks()
-		const listItem = $(`<li class="todo-item ${priority}"></li>`)
+		const listItem = $(`<li class="todo-item ${priority}"></li>`).css(
+			'grid-column',
+			{
+				low: 1,
+				medium: 2,
+				high: 3,
+			}[priority] || 1
+		)
+
 		const taskText = $('<span></span>').text(newTask)
 		const buttonDelete = $(
 			'<div class="delete"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.5305 9.99595L19.0623 5.46883C20.3126 4.22108 20.3126 2.18956 19.0623 0.941811C17.8103 -0.313937 15.7817 -0.313937 14.5305 0.941811L9.99961 5.46883L5.46868 0.941811C4.21835 -0.313937 2.18967 -0.313937 0.937744 0.941811C-0.312582 2.18956 -0.312581 4.22108 0.937744 5.46883L5.46868 9.99595L0.937744 14.5311C-0.312581 15.7788 -0.312581 17.8104 0.937744 19.0582C2.18967 20.3139 4.21835 20.3139 5.46868 19.0582L9.99961 14.5311L14.5305 19.0582C15.7817 20.3139 17.8103 20.3139 19.0623 19.0582C20.3126 17.8104 20.3126 15.7788 19.0623 14.5311L14.5305 9.99595Z" fill="red"/></svg></div>'
@@ -112,7 +128,7 @@ async function addTask() {
 			) {
 				const index = $(this).index()
 				tasks[index].completed = !tasks[index].completed
-				saveTasks() // Сохранение в localStorage
+				saveTasks()
 				$(this).toggleClass('completed')
 			}
 		})
@@ -121,7 +137,7 @@ async function addTask() {
 			e.stopPropagation()
 			const index = $(this).parent().index()
 			tasks.splice(index, 1)
-			saveTasks() // Сохранение в localStorage
+			saveTasks()
 			$(this).parent().remove()
 			if (customWindow.length) customWindow.hide()
 		})
@@ -143,7 +159,7 @@ confirm.on('click', function () {
 	const text = $('#customInput').val()
 	if (text.trim() !== '' && editIndex !== -1) {
 		tasks[editIndex].text = text
-		saveTasks() // Сохранение в localStorage
+		saveTasks()
 		const listItem = $('.todo-item').eq(editIndex)
 		listItem.find('span').text(text)
 		editIndex = -1
