@@ -201,10 +201,3 @@ h1 {
 .priority-btn:hover {
 	scale: 1.1;
 }
-@media (max-width: 1080px) {
-	form {
-		position: relative;
-		left: 50%;
-		transform: translate(-50%);
-	}
-}
