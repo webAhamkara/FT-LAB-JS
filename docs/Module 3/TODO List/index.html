@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<title>Список задач</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" type="text/css" href="style.css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="index.js" defer></script>
@@ -13,7 +14,11 @@
 				<input type="text" id="new-task" placeholder="Введите задачу" />
 				<button id="addButton" class="add">Добавить</button>
 			</form>
-			<ul id="todo-list"></ul>
+			<div class="todo-list">
+				<div class="column__first"></div>
+				<div class="column__second"></div>
+				<div class="column__third"></div>
+			</div>
 			<div id="customWindow" class="customWindow" style="display: none">
 				<div class="custom-content">
 					<input type="text" id="customInput" />

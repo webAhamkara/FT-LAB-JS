@@ -6,6 +6,13 @@ body {
 form {
 	display: inline-block;
 	justify-items: center;
+	flex-direction: column;
+}
+form input {
+	position: relative;
+}
+form button {
+	position: relative;
 }
 h1 {
 	position: relative;
@@ -26,22 +33,18 @@ h1 {
 .add {
 	height: 30px;
 }
-#todo-list {
-	list-style-type: none;
-	padding: 0;
-	display: grid !important;
-	grid-template-columns: repeat(3, 1fr);
-	grid-auto-flow: dense;
-	align-items: start;
-	gap: 15px;
+.todo-list {
 	padding: 0;
 	margin: 20px 0;
-	list-style: none;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	position: relative;
+	left: -3%;
 }
 
 .todo-item {
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
 	padding: 8px;
 	border-bottom: 1px solid #ccc;
@@ -65,17 +68,24 @@ h1 {
 	scale: 1.2;
 	margin-inline: 20px;
 }
+.column__first,
+.column__second,
+.column__third {
+	width: 220px;
+	height: auto;
+}
+.column__first .todo-item:nth-child(n + 2) {
+	margin-top: 10px;
+}
+.column__second .todo-item:nth-child(n + 2) {
+	margin-top: 15px;
+}
+.column__third .todo-item:nth-child(n + 2) {
+	margin-top: 20px;
+}
 .completed {
 	text-decoration: line-through;
 	color: #888;
-}
-ul li {
-	z-index: 1;
-	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-	user-select: none;
-}
-#todo-list {
-	gap: 30px;
 }
 .delete,
 .edit {
@@ -190,4 +200,16 @@ ul li {
 }
 .priority-btn:hover {
 	scale: 1.1;
+}
+@media (max-width: 768px) {
+	form {
+		position: relative;
+		left: 50%;
+		transform: translate(-50%);
+	}
+	.todo-list {
+		display: flex;
+		flex-direction: row;
+		gap: 10px;
+	}
 }
