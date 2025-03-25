@@ -29,7 +29,6 @@ function saveTasks() {
 }
 
 function renderTasks() {
-	// Очищаем все колонки
 	$('.column__first, .column__second, .column__third').empty()
 
 	tasks.forEach((task, index) => {
@@ -43,7 +42,6 @@ function renderTasks() {
             </li>`
 		)
 
-		// Определяем целевую колонку
 		const column =
 			{
 				low: '.column__first',
@@ -51,10 +49,8 @@ function renderTasks() {
 				high: '.column__third',
 			}[task.priority] || '.column__first'
 
-		// Добавляем в соответствующую колонку
 		$(column).append(listItem)
 
-		// Обработчики событий
 		listItem.on('click', function (e) {
 			if (!$(e.target).closest('.delete, .edit').length) {
 				const index = $(this).data('index')
