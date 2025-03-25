@@ -4,7 +4,7 @@ import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
 export default defineConfig({
-  base: '/FT-LAB-JS/vue-project/',
+  base: '/vue-project/',
   plugins: [vue(), vueDevTools()],
   resolve: {
     alias: {
