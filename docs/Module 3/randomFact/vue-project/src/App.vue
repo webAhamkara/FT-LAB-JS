@@ -15,20 +15,36 @@ const fetchFact = async () => {
 
 	try {
 		loading.value = true
-		const response = await fetch(
-			`http://numbersapi.com/${userText.value}/${userChoice.value}?json`
-		)
-		const data = await response.json()
+		answer.value = null
 
-		if (!data.found) {
-			const suffix =
-				userChoice.value === 'year' ? 'скучный год' : 'скучное число'
-			answer.value = { text: `${userText.value} - ${suffix}` }
-		} else {
-			answer.value = data
+		const url = `https://numbersapi.p.rapidapi.com/${userText.value}/${userChoice.value}?fragment=true&json=true`
+
+		const response = await fetch(url, {
+			method: 'GET',
+			headers: {
+				'x-rapidapi-key': 'e4f1e73af1msh896ad6f562d93dcp14e5b2jsnc25bcfd40ae5',
+				'x-rapidapi-host': 'numbersapi.p.rapidapi.com',
+			},
+		})
+
+		const responseText = await response.text()
+
+		try {
+			const data = JSON.parse(responseText)
+			answer.value = {
+				text: data.text || `${userText.value} - скучное значение`,
+			}
+		} catch (e) {
+			answer.value = {
+				text: responseText || 'Не удалось получить факт',
+			}
 		}
 	} catch (error) {
-		answer.value = { text: 'Не найдено', type: 'error' }
+		console.error('Ошибка запроса:', error)
+		answer.value = {
+			text: `Ошибка: ${error.message}`,
+			type: 'error',
+		}
 	} finally {
 		loading.value = false
 	}
